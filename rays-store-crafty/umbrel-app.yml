@@ -1,0 +1,51 @@
+id: crafty # Unique identifier for the app, used in `APP_HOST` and other identifiers
+name: Crafty Controller
+version: 1.0.0 # Initial version, adjust as you update
+description: "A powerful Minecraft server management tool with web-based UI for managing and monitoring multiple Minecraft servers."
+author: Crafty Team
+repository: https://gitlab.com/crafty-controller/crafty-4
+license: AGPL-3.0-or-later
+
+# Umbrel app store details
+homepage: https://craftycontrol.com/
+dependencies:
+  - docker
+  - internet
+category: Games
+type: app
+
+# App-specific configurations
+ports:
+  - 8443 # HTTPS port for Crafty web interface
+  - 8123 # DYNMAP port
+  - 19132/udp # Bedrock port for Minecraft
+  - 25500-25600 # Minecraft server port range
+
+volumes:
+  - name: backups
+    path: /crafty/backups
+  - name: logs
+    path: /crafty/logs
+  - name: servers
+    path: /crafty/servers
+  - name: config
+    path: /crafty/app/config
+  - name: import
+    path: /crafty/import
+
+# Umbrel app lifecycle scripts
+scripts:
+  install: |
+    echo "Installing Crafty Controller..."
+  start: |
+    echo "Starting Crafty Controller..."
+  stop: |
+    echo "Stopping Crafty Controller..."
+  uninstall: |
+    echo "Uninstalling Crafty Controller..."
+
+# Optional but recommended settings
+icon: https://craftycontrol.com/images/crafty-logo.png # Use the official icon URL or a local path
+support:
+  email: support@craftycontrol.com
+  forum: https://community.craftycontrol.com

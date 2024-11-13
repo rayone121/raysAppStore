@@ -1,0 +1,36 @@
+version: "3.7"
+
+services:
+  # Define the app's proxy service to route requests through Umbrel
+  app_proxy:
+    environment:
+      APP_HOST: crafty_crafty_1 # Format is <app-id>_<docker-service-name>_1; replace 'crafty' with your app ID if needed
+      APP_PORT: 8443 # Main port for HTTPS access to the app
+    image: getumbrel/umbrel-app-proxy:latest
+    networks:
+      - umbrel_main_network
+
+  # Define the main Crafty server
+  crafty:
+    container_name: crafty_container
+    image: registry.gitlab.com/crafty-controller/crafty-4:latest
+    restart: always
+    environment:
+      - TZ=Etc/UTC
+    ports:
+      - "8443:8443" # HTTPS
+      - "8123:8123" # DYNMAP
+      - "19132:19132/udp" # BEDROCK
+      - "25500-25600:25500-25600" # MC SERVER PORT RANGE
+    volumes:
+      - ${UMBREL_ROOT}/app-data/crafty/backups:/crafty/backups
+      - ${UMBREL_ROOT}/app-data/crafty/logs:/crafty/logs
+      - ${UMBREL_ROOT}/app-data/crafty/servers:/crafty/servers
+      - ${UMBREL_ROOT}/app-data/crafty/config:/crafty/app/config
+      - ${UMBREL_ROOT}/app-data/crafty/import:/crafty/import
+    networks:
+      - umbrel_main_network
+
+networks:
+  umbrel_main_network:
+    external: true

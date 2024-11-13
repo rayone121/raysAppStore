@@ -9,8 +9,6 @@ license: AGPL-3.0-or-later
 # Umbrel app store details
 homepage: https://craftycontrol.com/
 dependencies:
-  - docker
-  - internet
 category: Games
 type: app
 
@@ -32,17 +30,6 @@ volumes:
     path: /crafty/app/config
   - name: import
     path: /crafty/import
-
-# Umbrel app lifecycle scripts
-scripts:
-  install: |
-    echo "Installing Crafty Controller..."
-  start: |
-    echo "Starting Crafty Controller..."
-  stop: |
-    echo "Stopping Crafty Controller..."
-  uninstall: |
-    echo "Uninstalling Crafty Controller..."
 
 # Optional but recommended settings
 icon: https://craftycontrol.com/images/crafty-logo.png # Use the official icon URL or a local path

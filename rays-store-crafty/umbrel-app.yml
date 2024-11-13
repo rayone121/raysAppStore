@@ -1,38 +1,54 @@
-id: crafty # Unique identifier for the app, used in `APP_HOST` and other identifiers
+manifestVersion: 1
+id: crafty
+category: games
 name: Crafty Controller
-version: 1.0.0 # Initial version, adjust as you update
-description: "A powerful Minecraft server management tool with web-based UI for managing and monitoring multiple Minecraft servers."
-author: Crafty Team
-repository: https://gitlab.com/crafty-controller/crafty-4
-license: AGPL-3.0-or-later
+version: "4.0.0"  # Update this as necessary
+tagline: Manage and monitor your Minecraft servers with ease
+description: >-
+  Crafty Controller is a powerful web-based management tool for Minecraft servers, providing an intuitive interface for starting, stopping, monitoring, and configuring multiple Minecraft instances.
 
-# Umbrel app store details
-homepage: https://craftycontrol.com/
-dependencies:
-category: Games
-type: app
+  🛠️ **SET-UP INSTRUCTIONS**
 
-# App-specific configurations
-ports:
-  - 8443 # HTTPS port for Crafty web interface
-  - 8123 # DYNMAP port
-  - 19132/udp # Bedrock port for Minecraft
-  - 25500-25600 # Minecraft server port range
+    - **Initial Setup**: Access the Crafty web UI at `http://umbrel.local:8443` after installation.
+    - **Login**: Use the default credentials provided below to log in for the first time.
+    - **Server Configuration**: Once logged in, add and configure your Minecraft server(s) under the "Servers" section.
+    - **Documentation**: Refer to the official documentation at [Crafty Docs](https://craftycontrol.com/docs/) for advanced configuration options.
 
-volumes:
-  - name: backups
-    path: /crafty/backups
-  - name: logs
-    path: /crafty/logs
-  - name: servers
-    path: /crafty/servers
-  - name: config
-    path: /crafty/app/config
-  - name: import
-    path: /crafty/import
+developer: Crafty Team
+website: https://craftycontrol.com/
+dependencies: []
+repo: https://gitlab.com/crafty-controller/crafty-4
+support: https://community.craftycontrol.com
+port: 8443
+gallery:
+  - crafty-screenshot1.jpg
+  - crafty-screenshot2.jpg
+  - crafty-screenshot3.jpg
+path: ""
+defaultUsername: "admin"
+defaultPassword: "admin123"
+torOnly: false
+releaseNotes: >-
+  This update includes several new features and improvements for Minecraft server management:
 
-# Optional but recommended settings
-icon: https://craftycontrol.com/images/crafty-logo.png # Use the official icon URL or a local path
-support:
-  email: support@craftycontrol.com
-  forum: https://community.craftycontrol.com
+    - Enhanced server monitoring with real-time statistics.
+    - Added support for Minecraft Bedrock servers.
+    - Updated user interface for easier navigation and management.
+    - Improved logging and error reporting to aid in troubleshooting.
+    - New auto-backup feature with custom scheduling options.
+    - Enhanced compatibility with latest Minecraft versions and mods.
+
+  **Bug Fixes**:
+  
+    - Resolved issues with server crashes on certain modded setups.
+    - Fixed memory leaks related to server monitoring.
+    - Addressed connectivity issues for remote access.
+  
+  **Security Updates**:
+  
+    - Added support for HTTPS connections.
+    - Improved access controls for server management.
+  
+  Full release notes are available [here](https://gitlab.com/crafty-controller/crafty-4/-/releases).
+submitter: Raymond
+submission: https://github.com/
